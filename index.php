@@ -18,8 +18,10 @@
       <div class="jumbotron">
         <h1>Document Management System</h1>
         <p class="lead">
-          This is the CDC Document Management System. Per 47 CFR 97.113, unauthorized access
+          This is the CDC Document Management System. Unauthorized access
           to critical systems is PROHIBITED. Leave IMMEDIATELY if unauthorized.
+          Unauthorized access WILL be prosecuted under the Computer Fraud
+          and Abuse Act of 1986.
         </p>
         <p>
           Select a document category below to view or download files. Use the navigation options
