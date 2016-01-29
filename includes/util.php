@@ -10,6 +10,17 @@ if (isset($_GET["authtoken"])) {
 $key = "bu83bonu85vuixr24xkt95y";
 $atbase = "a13e038fe3e8bc386d32412";
 
+function clean_input($regex, $input) {
+    $lstring = preg_replace($type, '', str_replace(chr(0), '', $input));
+    $string = strip_tags($lstring);
+    while ($string != $lstring) {
+        $lstring = $string;
+        $string = strip_tags($lstring);
+    }
+    
+    return $mysqli->real_escape_string(escapeshellarg(stripslashes($string)));
+}
+
 function hash_password($password) {
   $atbase = $GLOBALS['atbase'];
   return '$sha256:'.bin2hex($atbase ^ $password).':'.bin2hex($password);
