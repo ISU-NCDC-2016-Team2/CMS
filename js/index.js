@@ -26,13 +26,13 @@ function populate_types() {
 
         var req = new XMLHttpRequest();
         req.addEventListener("load", create_render_callback(types[index]));
-        req.open("GET", base + "/ajax/check_auth.php?type=" + types[index]  + "&authtoken=" + authtoken);
+        req.open("GET", base + "/ajax/check_auth.php?type=" + types[index]);
         req.send()
     }
 }
 
 function do_show(type) {
-    window.location.replace(base + "/show.php?type=" + type + "&authtoken=" + authtoken);
+    window.location.replace(base + "/show.php?type=" + type);
 }
 
 function do_onload() {
@@ -54,7 +54,7 @@ function doLogin() {
 
     function cb_login() {
         if (this.status == 200) {
-            window.location.replace(base + "?authtoken=" + this.responseText);
+            window.location.replace("/");
         } else {
             $("#login-inner").prepend('<div class="alert alert-danger">Invalid username or password</div>');
         }

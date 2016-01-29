@@ -2,7 +2,7 @@
 # CSRF Protection
 #
 ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <?php include('includes/util.php'); ?>

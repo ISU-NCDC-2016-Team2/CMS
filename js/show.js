@@ -35,7 +35,7 @@ function do_onload() {
 		}
 	}
 	req.addEventListener("load", cb_render);
-	req.open("GET", base + "/ajax/check_auth.php?type=" + type + "&authtoken=" + authtoken);
+	req.open("GET", base + "/ajax/check_auth.php?type=" + type);
 	req.send();
 }
 

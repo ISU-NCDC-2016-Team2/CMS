@@ -3,18 +3,17 @@
 # CSRF Protection
 
 ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <?php include('includes/util.php'); ?>
     <?php include('includes/head.php'); ?>
-    <script src="<?php echo($base."/js/upload.js"); ?>"></script>
+    <script src="/js/upload.js"></script>
   </head>
   <body>
     <div class="container">
       <?php include('includes/nav.php'); ?>
       <div id="after-nav"></div>
-
       <div style="display:flex;justify-content:center;align-items:center;" id="select">
         <div style="width:560px;height:480px;" id="select-inner">
           <form style="display: none" id="form-upload">

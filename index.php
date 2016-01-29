@@ -1,7 +1,7 @@
 <?php
     session_start();
 ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <?php include('includes/util.php'); ?>
