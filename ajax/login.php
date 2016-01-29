@@ -1,17 +1,40 @@
 <?php
-#include('../includes/util.php');
-if (!isset($_POST['username']) or !isset($_POST['password']) or $_POST['username'] == '' or $_POST['password'] == '') {
-    http_response_code(400);
-} else {
-    $user = $_POST['username'];
-    $password = $_POST['password'];
+    session_start();
 
-    $ldap = ldap_connect("dc.team2.isucdc.com");
-    
-    if ($bind = ldap_bind($ldap, $user, $password)) {
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         http_response_code(200);
-        echo(encrypt_authtoken($_GET['username']));
-    } else {
-        http_response_code(403);
     }
-}
+
+    if (!isset($_POST['username']) or !isset($_POST['password']) or $_POST['username'] == '' or $_POST['password'] == '') {
+        http_response_code(400);
+    } else {
+        $user = $_POST['username'];
+        $password = $_POST['password'];
+
+        $ldap = ldap_connect("dc.team2.isucdc.com");
+   
+        sleep(rand(100, 700) * 1000.0 );
+
+        if ($bind = ldap_bind($ldap, $user, $password)) {
+            $_SESSION['username'] = $user;
+            $_SESSION['auth_id'] = hash("sha256", openssl_random_pseudo_bytes(200));
+            $_SESSION['start_time'] = time();
+            $_SESSION['last_request'] = time();
+            $_SESSION['logged_in'] = true;
+            $_SESSION['admin'] = false; // TODO
+            $_SESSION['file_access'] = [];
+            $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+            $_SESSION['remote_ip'] = $_SERVER['REMOTE_ADDR'];
+
+            session_regenerate_id(true);
+
+            http_response_code(200);
+        } else {
+            sleep(rand(300, 900) * 1000.0 );
+            $_SESSION['logged_in'] = false;
+            http_response_code(403);
+        }
+    }
+
+    
+?>
