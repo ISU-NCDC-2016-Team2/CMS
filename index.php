@@ -1,7 +1,5 @@
 <?php
-
-# CSRF Protection
-
+    session_start();
 ?>
 
 <html>

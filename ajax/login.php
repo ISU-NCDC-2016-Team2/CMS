@@ -1,23 +1,17 @@
 <?php
-include('../includes/util.php');
-if (!isset($_GET['username']) or !isset($_GET['password'])) {
-	http_response_code(400);
+#include('../includes/util.php');
+if (!isset($_POST['username']) or !isset($_POST['password']) or $_POST['username'] == '' or $_POST['password'] == '') {
+    http_response_code(400);
 } else {
-  $authenticated = false;
-  $pwfile = fopen("../.passwords", "r");
-  $user = $_GET['username'];
-  $password = $_GET['password'];
-  if($pwfile) {
-    while (($line = fgets($pwfile)) !== false) {
-      $line = trim($line);
-      if (!strcmp($user, explode(":", $line)[0]) and !strcmp($password, hex2bin(end(explode(":", $line)))))
-        $authenticated = true;
+    $user = $_POST['username'];
+    $password = $_POST['password'];
+
+    $ldap = ldap_connect("dc.team2.isucdc.com");
+    
+    if ($bind = ldap_bind($ldap, $user, $password)) {
+        http_response_code(200);
+        echo(encrypt_authtoken($_GET['username']));
+    } else {
+        http_response_code(403);
     }
-  }
-	if ($authenticated) {
-		http_response_code(200);
-		echo(encrypt_authtoken($_GET['username']));
-	} else {
-		http_response_code(403);
-	}
 }
