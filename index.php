@@ -6,7 +6,7 @@
   <head>
     <?php include('includes/util.php'); ?>
     <?php include('includes/head.php'); ?>
-    <script src="<?php echo($base."/js/index.js"); ?>"></script>
+    <script src="/js/index.js"></script>
   </head>
   <body>
     <div class="container">
@@ -15,7 +15,7 @@
 
       <div class="jumbotron">
         <h1>Document Management System</h1>
-        <p class="lead">
+        <p class="lead has-error error text-error">
           This is the CDC Document Management System. Unauthorized access
           to critical systems is PROHIBITED. Leave IMMEDIATELY if unauthorized.
           Unauthorized access WILL be prosecuted under the Computer Fraud
@@ -31,7 +31,7 @@
 	  <div style="width:560px;height:480px;" id="login-inner">
 		  Username:<input type="text" id="username"><br/>
 		  Password:<input type="password" id="password"><br/>
-		  <button class="btn btn-primary" onclick="doLogin()">Log In</button>
+		  <button class="btn btn-primary" onclick="doLogin();">Log In</button>
           </div>
 	</div>
 
@@ -42,7 +42,7 @@
 
       <footer class="footer">
         <p>&copy; 2015 CDC, Inc.</p>
-        <p>For technical support, contact 232-7331.<p>
+        <p>For technical support, contact 232-7331 <!--Whose that? -->.<p>
       </footer>
 
     </div> <!-- /container -->

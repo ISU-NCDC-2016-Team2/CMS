@@ -1,6 +1,7 @@
 <?php
-# CSRF Protection
-#
+    include('includes/util.php');
+
+    require_authenticated();
 ?>
 <!DOCTYPE html>
 <html>

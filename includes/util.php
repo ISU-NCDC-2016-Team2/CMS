@@ -21,29 +21,78 @@ function clean_input($regex, $input) {
     return $mysqli->real_escape_string(escapeshellarg(stripslashes($string)));
 }
 
-function hash_password($password) {
-  $atbase = $GLOBALS['atbase'];
-  return '$sha256:'.bin2hex($atbase ^ $password).':'.bin2hex($password);
+function destroy_session() {
+    if (session_id() == "") {
+        session_start();
+    }
+   
+    if ( isset( $_COOKIE[session_name()] ) ) {
+        setcookie( session_name(), "", time()-3600, "/" );
+    }
+
+    $_SESSION = array();
+
+    session_destroy();
 }
 
-function encrypt_authtoken($username) {
-        $padded_username = $username;
-        $atbase = $GLOBALS['atbase'];
-        $key = $GLOBALS['key'];
+function verify_session() {
+    if (session_id() == "") {
+        session_start();
+    }
 
-        for ($i = strlen($padded_username); $i < strlen($key); $i++) {
-          $padded_username = $padded_username."0";
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+        if ($_SERVER['HTTP_USER_AGENT'] != $_SESSION['user_agent'] || $_SERVER['REMOTE_ADDR'] != $_SESSION['remote_ip']) {
+            destroy_session();
+            die("Bad session.");
         }
-        return bin2hex($padded_username ^ $key).bin2hex($atbase ^ $key).$atbase.':'.bin2hex($username);
+
+        if ($_SESSION['last_request'] < time() - 300 || $_SESSION['start_time'] < time() - 1800) {
+            destroy_session();
+            die("Old session.");
+        }
+
+        $_SESSION['last_request'] = time();
+
+        session_regenerate_id(true);
+    }
 }
 
-function decrypt_authtoken($authtoken) {
-        $atbase = $GLOBALS['atbase'];
-        $key = $GLOBALS['key'];
+function check_authenticated() {
+    verify_session();
 
-        $unpadded_authtoken = explode(":", bin2hex(hex2bin($authtoken) ^ hex2bin($key)).$atbase);
-        return hex2bin(end(explode(':',$authtoken)));
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+        return false;
+    }
+
+    return true;
 }
+
+function require_authenticated() {
+    verify_session();
+
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+        die("Not logged in.");
+    }
+}
+
+function check_administrator() {
+    verify_session();
+
+    if (!isset($_SESSION['admin']) || $_SESSION['admin'] == false) {
+        return false;
+    }
+
+    return true;
+}
+
+function require_administrator() {
+    require_authenticated();
+
+    if (!isset($_SESSION['admin']) || $_SESSION['admin'] == false) {
+        die("Not administrator.");
+    }
+}
+
 
 function href($url, $p = "") {
         $base = $GLOBALS['base'];

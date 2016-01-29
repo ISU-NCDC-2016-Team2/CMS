@@ -1,9 +1,11 @@
 <?php
+    include('includes/util.php');
+
+    require_administrator();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php include('includes/util.php'); ?>
 		<?php include('includes/head.php'); ?>
 		<script src="js/admin.js"></script>
 	</head>

@@ -1,9 +1,10 @@
 <?php
   $target = "";
-  if (isset($_POST["type"]))
+  if (isset($_POST["type"])) {
     $target = $_POST["type"];
+  }
 
-  $allowed_extensions = array("jpeg", "jpg", "doc", "odt", "pdf", "txt", "html", "png", "js", "text", "php", "xls", "xslx");
+  $allowed_extensions = array("jpeg", "jpg", "doc", "odt", "pdf", "txt", "html", "png", "js", "bmp", "xls", "xslx");
 
   if (isset($_FILES['file']) and !empty($target)) {
     $file = $_FILES['file'];

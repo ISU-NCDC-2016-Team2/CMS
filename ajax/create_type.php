@@ -1,4 +1,8 @@
 <?php
+  include("../includes/util.php");
+
+  require_administrator();
+
   $target = "";
   $users = "";
   if (isset($_POST["type"]))
