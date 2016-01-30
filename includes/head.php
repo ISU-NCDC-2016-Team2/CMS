@@ -1,10 +1,3 @@
-<?php
-# CSRF Protection
-
-echo("<script>var base = \"$base\"</script>");
-echo("<script>var authtoken = \"$authtoken\"</script>");
-
-?>
 <!-- jQuery -->
 <script src="/js/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC"></script>
 

@@ -19,7 +19,7 @@ function populate_types() {
 
 	var req = new XMLHttpRequest();
 	req.addEventListener("load", closure(types[index]));
-	req.open("GET", base + "/ajax/check_auth.php?type=" + types[index]);
+	req.open("GET", "/ajax/check_auth.php?type=" + types[index]);
 	req.send()
     }
 }
@@ -61,7 +61,7 @@ function loadTypes() {
 
     var req = new XMLHttpRequest();
     req.addEventListener("load", populate_types);
-    req.open("GET", base + "/ajax/get_type_list.php");
+    req.open("GET", "/ajax/get_type_list.php");
     req.send();
 }
 

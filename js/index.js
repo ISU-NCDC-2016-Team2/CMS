@@ -26,13 +26,13 @@ function populate_types() {
 
         var req = new XMLHttpRequest();
         req.addEventListener("load", create_render_callback(types[index]));
-        req.open("GET", base + "/ajax/check_auth.php?type=" + types[index]);
+        req.open("GET", "/ajax/check_auth.php?type=" + types[index]);
         req.send()
     }
 }
 
 function do_show(type) {
-    window.location.replace(base + "/show.php?type=" + type);
+    window.location.replace("/show.php?type=" + type);
 }
 
 function do_onload() {
@@ -42,7 +42,7 @@ function do_onload() {
         $("#login").hide();
         var req = new XMLHttpRequest();
         req.addEventListener("load", populate_types);
-        req.open("GET", base + "/ajax/get_type_list.php");
+        req.open("GET", "/ajax/get_type_list.php");
         req.send();
     }
 }
@@ -61,7 +61,7 @@ function doLogin() {
     }
 
     req.addEventListener("load", cb_login);
-    req.open("GET", base + "/ajax/login.php?" + params);
+    req.open("GET", "/ajax/login.php?" + params);
     req.send();
 }
 

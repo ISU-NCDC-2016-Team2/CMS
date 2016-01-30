@@ -15,13 +15,13 @@ function render_file_list() {
 		}
 	}
 	req.addEventListener("load", cb_add_files);
-	req.open("GET", base + "/ajax/get_file_list.php?type=" + type);
+	req.open("GET", "/ajax/get_file_list.php?type=" + type);
 	req.send();
 }
 
 function download_file(filename) {
 	$("#after-nav").prepend('<div class="alert alert-success" role="alert">Downloading</div>');
-	$("#after-nav").append('<iframe style="display:none" width="1" height="1" frameborder="0" src="' + base + "/ajax/download.php?path=" + type + "/" + filename + '"></iframe>');
+	$("#after-nav").append('<iframe style="display:none" width="1" height="1" frameborder="0" src="' + "/ajax/download.php?path=" + type + "/" + filename + '"></iframe>');
 }
 
 function do_onload() {
@@ -35,7 +35,7 @@ function do_onload() {
 		}
 	}
 	req.addEventListener("load", cb_render);
-	req.open("GET", base + "/ajax/check_auth.php?type=" + type);
+	req.open("GET", "/ajax/check_auth.php?type=" + type);
 	req.send();
 }
 
