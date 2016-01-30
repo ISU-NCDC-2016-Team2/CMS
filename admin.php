@@ -39,27 +39,4 @@ foreach($types as $type) {
 }
 ?>
 				</ul>
-				<h3>Users</h3>
-				<button type="button" class="btn btn-primary admin-function" onclick="$('#add-user-form').show()"
-						style="display: none;">
-					Add New User
-				</button>
-				<div id="add-user-form" style="display: none;">
-					<label>Name</label><input type="text" id="new-user-name"> <br/>
-					<label>Password</label><input type="text" id="new-user-password">
-					<button type="button" class="btn btn-primary" onclick="createNewUser()">Create</button>
-        </div>
-<?php
-$pwfile = fopen(".passwords", "r");
-if($pwfile) {
-  while (($line = fgets($pwfile)) !== false) {
-    $user = explode(":", $line)[0];
-    echo("<li id=\"user-list-item-$user\">");
-    echo("<button class=\"glyphicon glyphicon-remove admin-function\" ");
-    echo("onclick=\"delete_user('$user')\" style=\"display: none;\"></button>");
-    echo($user);
-    echo("</li>\n");
-  }
-}
-?>
 </html>
