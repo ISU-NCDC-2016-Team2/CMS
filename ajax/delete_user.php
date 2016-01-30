@@ -1,5 +1,5 @@
 <?php
-include('../includes/util.php');
+include_once('../includes/util.php');
 if (!isset($_GET['username'])) {
 	http_response_code(400);
 } else {

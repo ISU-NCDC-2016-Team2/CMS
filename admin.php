@@ -1,17 +1,17 @@
 <?php
-    include('includes/util.php');
+    include_once('includes/util.php');
 
     require_administrator();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php include('includes/head.php'); ?>
+		<?php include_once('includes/head.php'); ?>
 		<script src="js/admin.js"></script>
 	</head>
 	<body>
 		<div class="container">
-			<?php include('includes/nav.php'); ?>
+			<?php include_once('includes/nav.php'); ?>
 
 			<div class="row marketing">
 				<h3>Document Types</h3>

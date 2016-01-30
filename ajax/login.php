@@ -11,9 +11,7 @@
         $user = $_POST['username'];
         $password = $_POST['password'];
 
-        $ldap = ldap_connect("dc.team2.isucdc.com");
-   
-        sleep(rand(100, 700) * 1000.0 );
+        $ldap = ldap_connect("10.3.0.2");
 
         if ($bind = ldap_bind($ldap, $user, $password)) {
             $_SESSION['username'] = $user;
@@ -30,7 +28,6 @@
 
             http_response_code(200);
         } else {
-            sleep(rand(300, 900) * 1000.0 );
             $_SESSION['logged_in'] = false;
             http_response_code(403);
         }

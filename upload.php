@@ -1,18 +1,18 @@
 <?php
-    include('includes/util.php');
+    include_once('includes/util.php');
 
     require_authenticated();
 ?>
 <!DOCTYPE html>
 <html>
   <head>
-    <?php include('includes/util.php'); ?>
-    <?php include('includes/head.php'); ?>
+    <?php include_once('includes/util.php'); ?>
+    <?php include_once('includes/head.php'); ?>
     <script src="/js/upload.js"></script>
   </head>
   <body>
     <div class="container">
-      <?php include('includes/nav.php'); ?>
+      <?php include_once('includes/nav.php'); ?>
       <div id="after-nav"></div>
       <div style="display:flex;justify-content:center;align-items:center;" id="select">
         <div style="width:560px;height:480px;" id="select-inner">

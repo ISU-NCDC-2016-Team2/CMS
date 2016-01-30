@@ -1,13 +1,13 @@
 <?php
-    include('includes/util.php');
+    include_once('includes/util.php');
 
     require_authenticated();
 ?>
 <!DOCTYPE html>
 <html>
   <head>
-    <?php include('includes/util.php'); ?>
-    <?php include('includes/head.php'); ?>
+    <?php include_once('includes/util.php'); ?>
+    <?php include_once('includes/head.php'); ?>
 
 	<script> var type = <?php
 if (isset($_GET["type"])) {
@@ -21,7 +21,7 @@ if (isset($_GET["type"])) {
   </head>
   <body>
     <div class="container">
-      <?php include('includes/nav.php'); ?>
+      <?php include_once('includes/nav.php'); ?>
 
       <div class="row marketing" id="after-nav">
         <h3>Files</h3>

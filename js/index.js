@@ -59,13 +59,13 @@ function doLogin() {
             $("#login-inner").prepend('<div class="alert alert-danger">Invalid username or password</div>');
         }
     }
+    req.open("POST", "/ajax/login.php");
+    req.addEventListener("load", cb_login);
 
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.setRequestHeader("Content-length", params.length);
     req.setRequestHeader("Connection", "close");
 
-    req.addEventListener("load", cb_login);
-    req.open("POST", "/ajax/login.php");
     
     req.send(params);
 }

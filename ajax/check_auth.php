@@ -1,5 +1,5 @@
 <?php
-    include('../includes/util.php');
+    include_once('../includes/util.php');
 
     if (!check_authenticated()) {
         http_response_code(403);

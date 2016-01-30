@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <?php include('includes/util.php'); ?>
-    <?php include('includes/head.php'); ?>
+    <?php include_once('includes/util.php'); ?>
+    <?php include_once('includes/head.php'); ?>
     <script src="/js/index.js"></script>
   </head>
   <body>
     <div class="container">
-      <?php include('includes/nav.php'); ?>
+      <?php include_once('includes/nav.php'); ?>
       <div id="after-nav"></div>
 
       <div class="jumbotron">

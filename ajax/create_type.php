@@ -1,5 +1,5 @@
 <?php
-  include("../includes/util.php");
+  include_once("../includes/util.php");
 
   require_administrator();
 
