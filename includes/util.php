@@ -1,6 +1,6 @@
 <?php
 
-$base = "http://files.teamN.isucdc.com";
+$base = "http://files.team2.isucdc.com";
 if (isset($_GET["authtoken"])) {
         $authtoken = $_GET["authtoken"];
 } else {

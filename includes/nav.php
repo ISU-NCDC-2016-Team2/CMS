@@ -8,7 +8,7 @@
 <div class="header clearfix" id="navbar">
 <nav>
   <ul class="nav nav-pills pull-right">
-  <li role="presentation" class="active"><a <?php href("/");?>>Home</a></li>
+  <li role="presentation" class="active"><a href="/">Home</a></li>
   <!-- TODO : limit options -->
   <li role="presentation"><a href="/upload.php">Upload New Document</a></li>
   <li role="presentation"><a href="/admin.php">Admin</a></li>
