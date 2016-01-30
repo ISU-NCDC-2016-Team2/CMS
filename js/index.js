@@ -60,9 +60,14 @@ function doLogin() {
         }
     }
 
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+
     req.addEventListener("load", cb_login);
-    req.open("GET", "/ajax/login.php?" + params);
-    req.send();
+    req.open("POST", "/ajax/login.php");
+    
+    req.send(params);
 }
 
 window.onload = do_onload;
