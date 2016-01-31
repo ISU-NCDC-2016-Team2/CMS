@@ -6,7 +6,7 @@ function delete_type(t) {
 
     var cb_remove = function() {
         console.log("Removing " + "#type-list-item-" + type);
-        $("#type-list-item-" + type).remove();
+        window.location.reload();
     }
 
     var req = new XMLHttpRequest();
@@ -26,20 +26,3 @@ function createNewType() {
     req.send(params);
 }
 
-function do_onload() {
-    var req = new XMLHttpRequest();
-
-    function cb_render() {
-        console.log("Got auth result: " + this.status);
-        if (this.status == 200) {
-            console.log("Authorized!");
-            $(".admin-function").show();
-        }
-    }
-
-    req.addEventListener("load", cb_render);
-    req.open("GET", "/ajax/check_admin.php");
-    req.send();
-}
-
-window.onload = do_onload

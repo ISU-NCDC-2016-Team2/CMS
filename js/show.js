@@ -24,19 +24,4 @@ function download_file(filename) {
 	$("#after-nav").append('<iframe style="display:none" width="1" height="1" frameborder="0" src="' + "/ajax/download.php?path=" + type + "/" + filename + '"></iframe>');
 }
 
-function do_onload() {
-	var req = new XMLHttpRequest();
-	
-	function cb_render() {
-        console.log("Got auth result: " + this.status);
-		if (this.status == 200) {
-            console.log("Authorized!");
-			render_file_list();
-		}
-	}
-	req.addEventListener("load", cb_render);
-	req.open("GET", "/ajax/check_auth.php?type=" + type);
-	req.send();
-}
-
-window.onload = do_onload;
+window.onload = render_file_list();

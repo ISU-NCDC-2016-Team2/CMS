@@ -15,8 +15,7 @@
 
 			<div class="row marketing">
 				<h3>Document Types</h3>
-				<button type="button" class="btn btn-primary admin-function" onclick="$('#add-type-form').show()"
-						style="display: none;">
+				<button type="button" class="btn btn-primary admin-function" onclick="$('#add-type-form').show()">
 					Add New Document Type
 				</button>
 				<div id="add-type-form" style="display: none;">
@@ -26,16 +25,16 @@
 				</div>
 				<ul>
 <?php
-$types = scandir("files");
+$types = scandir("C:\\Files\\");
 foreach($types as $type) {
 	if($type == "." or $type == "..")
 		continue;
 
 	echo("<li id=\"type-list-item-$type\">");
 	echo("<button type=\"button\" class=\"glyphicon glyphicon-remove admin-function\" ");
-	echo("onclick=\"delete_type('$type')\" style=\"display: none;\"></button>");
+	echo("onclick=\"delete_type('$type')\" style=\"display: none;\">");
 	echo($type);
-	echo("</li>\n");
+	echo("</button></li>\n");
 }
 ?>
 				</ul>
