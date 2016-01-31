@@ -1,14 +1,6 @@
 <?php
 
 $base = "http://files.team2.isucdc.com";
-if (isset($_GET["authtoken"])) {
-        $authtoken = $_GET["authtoken"];
-} else {
-        $authtoken = "";
-}
-
-$key = "bu83bonu85vuixr24xkt95y";
-$atbase = "a13e038fe3e8bc386d32412";
 
 function clean_input($regex, $input) {
     $lstring = preg_replace($type, '', str_replace(chr(0), '', $input));
@@ -91,25 +83,6 @@ function require_administrator() {
     if (!isset($_SESSION['admin']) || $_SESSION['admin'] == false) {
         die("Not administrator.");
     }
-}
-
-
-function href($url, $p = "") {
-        $base = $GLOBALS['base'];
-        $authtoken = $GLOBALS['authtoken'];
-        if (empty($p)) {
-                if (!empty($authtoken)) {
-                        echo("href=\"$base$url?authtoken=$authtoken\"");
-                } else {
-                        echo("href=\"$base$url\"");
-                }
-        } else {
-                if (!empty($authtoken)) {
-                        echo("href=\"$base$url?$p&authtoken=$authtoken\"");
-                } else {
-                        echo("href=\"$base$url?$p\"");
-                }
-        }
 }
 
 ?>
