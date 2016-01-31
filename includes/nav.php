@@ -1,3 +1,5 @@
+<?php include_once("util.php"); ?>
+
 <div class="header clearfix" id="navbar">
 <nav>
   <ul class="nav nav-pills pull-right">
