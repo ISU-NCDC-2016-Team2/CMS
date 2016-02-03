@@ -3,10 +3,12 @@
 
     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         http_response_code(200);
+		die("error");
     }
 
     if (!isset($_POST['username']) or !isset($_POST['password']) or $_POST['username'] == '' or $_POST['password'] == '') {
         http_response_code(400);
+		die("error");
     } else {
         $user = $_POST['username'];
         $password = $_POST['password'];
@@ -30,8 +32,9 @@
         } else {
             $_SESSION['logged_in'] = false;
             http_response_code(403);
+    		die("error");
         }
     }
 
-    
+
 ?>

@@ -3,21 +3,21 @@
 $base = "http://files.team2.isucdc.com";
 
 function clean_input($regex, $input) {
-    $lstring = preg_replace($type, '', str_replace(chr(0), '', $input));
+    $lstring = preg_replace($regex, '', str_replace(chr(0), '', $input));
     $string = strip_tags($lstring);
     while ($string != $lstring) {
         $lstring = $string;
-        $string = strip_tags($lstring);
+        $string = stripslashes(strip_tags($lstring));
     }
-    
-    return $mysqli->real_escape_string(escapeshellarg(stripslashes($string)));
+
+    return stripslashes($string);
 }
 
 function destroy_session() {
     if (session_id() == "") {
         session_start();
     }
-   
+
     if ( isset( $_COOKIE[session_name()] ) ) {
         setcookie( session_name(), "", time()-3600, "/" );
     }
