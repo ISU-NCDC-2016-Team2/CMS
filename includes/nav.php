@@ -11,6 +11,7 @@
   if (check_administrator()) {?>
   <li role="presentation"><a href="/admin.php">Admin</a></li>
   <?php } if (check_authenticated()) { ?>
+  <li role="presentation"><a href="/show.php">Files</a></li>
   <li role="presentation"><a href="/ajax/logout.php">Log Out</a></li>
   <?php } ?>
   </ul>
