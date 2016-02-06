@@ -34,7 +34,7 @@
 	$files = scandir($dirname);
     $output = ["files" => []];
 	foreach($files as $file) {
-		if (substr($file, 0, 1) != "." && $files == $filename) {
+		if (substr($file, 0, 1) != "." && $file == $filename) {
             if (file_exists("$dirname\\$filename") && !is_dir("$dirname\\$filename") && accesschk($_SESSION["username"], $dirname)) {
                 header("Content-Type: application/octet-stream");
                 header("Content-Disposition: attachment; filename=$filename");

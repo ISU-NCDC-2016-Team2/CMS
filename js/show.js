@@ -30,9 +30,9 @@ function cb_add_files() {
 	var files = JSON.parse(this.responseText).files;
 	console.log("Files: " + this.responseText + "\n\n");
 	for (var i = 0; i < files.length; i++) {
-		var filename = files[index];
+		var filename = files[i];
 		if (filename.filename != "") {
-			$("#files-list").append('<li><a href="' + filename.uri + '" target="_blank">' + filename.type + "/" + filename.filename + '</a></li>');
+			$("#files-list").append('<li><a href="' + filename.uri + '" target="_blank">' + filename.type + "\\" + filename.filename + '</a></li>');
 		}
 	}
 }

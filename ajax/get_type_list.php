@@ -23,8 +23,8 @@
     $output = ["folders" => []];
 	foreach($folders as $folder) {
 		if (substr($folder, 0, 1) != ".") {
-            if (file_exists("$dirname\\$folder") && is_dir("$dirname\\$folder") && accesschk($_SESSION["username"], $folder)) {
-                $obj = ["type" => $dirname, "uri" => "/show.php?type=" . urlencode($dirname)];
+            if (file_exists("$dirname\\$folder") && is_dir("$dirname\\$folder") && accesschk($_SESSION["username"], "$dirname$folder")) {
+                $obj = ["type" => $folder, "uri" => "/show.php?type=" . urlencode($folder)];
                 $output["folders"][] = $obj;
             }
         }
