@@ -16,15 +16,22 @@
         $ldap = ldap_connect("10.3.0.2");
 
         if ($bind = ldap_bind($ldap, $user, $password)) {
+
             $_SESSION['username'] = $user;
             $_SESSION['auth_id'] = hash("sha256", openssl_random_pseudo_bytes(200));
             $_SESSION['start_time'] = time();
             $_SESSION['last_request'] = time();
             $_SESSION['logged_in'] = true;
-            $_SESSION['admin'] = false; // TODO
+            $_SESSION['admin'] = false;
             $_SESSION['file_access'] = [];
             $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
             $_SESSION['remote_ip'] = $_SERVER['REMOTE_ADDR'];
+
+
+            $userdn = getDN($ldap, $user, "dc=team2,dc=isucdc,dc=com");
+            if (checkGroupEx($ldap, $userdn, getDN($ldap, "Administrators", "dc=team2,dc=isucdc,dc=com"))) {
+                $_SESSION['admin'] = true;
+            }
 
             session_regenerate_id(true);
 
