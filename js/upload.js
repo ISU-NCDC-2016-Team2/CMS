@@ -10,10 +10,11 @@ function closure(t) {
 }
 
 function populate_types() {
-    types = JSON.parse(this.responseText).types;
-
+	console.log("Received type list: " + this.responseText);
+    var types = JSON.parse(this.responseText).folders;
+	
     for (var i = 0; i < types.length; i++) {
-		var typename = folders[i];
+		var typename = types[i];
 		if (typename.type != "") {
 			$("#dropdown-items").append("<li><a href=\"#\" onclick=\"setCategory('" + typename.type + "')\">" + typename.type + "</a></li>");
 		}
