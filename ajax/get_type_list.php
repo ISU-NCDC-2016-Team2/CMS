@@ -28,7 +28,7 @@
     $output = ["folders" => []];
 	foreach($folders as $folder) {
 		if (substr($folder, 0, 1) != ".") {
-            if (file_exists($folder) && is_dir($folder) && accesschk($_SESSION["username"], $folder)) {
+            if (file_exists("$dirname\\$folder") && is_dir("$dirname\\$folder") && accesschk($_SESSION["username"], $folder)) {
                 $obj = ["type" => $dirname, "uri" => "/show.php?type=" . urlencode($dirname)];
                 $output["folders"][] = $obj;
             }

@@ -34,8 +34,8 @@
 
     $output = ["files" => []];
 	foreach($files as $file) {
-		if (substr($folder, 0, 1) != ".") {
-            if (file_exists($file) && !is_dir($file) && accesschk($_SESSION["username"], $dirname)) {
+		if (substr($file, 0, 1) != ".") {
+            if (file_exists("$dirname\\$file") && !is_dir("$dirname\\$file") && accesschk($_SESSION["username"], $dirname)) {
                 $obj = ["filename" => $file, "type" => $dirname, "uri" => "/ajax/download.php?type=" . urlencode($dirname) . "&filename=" . urlencode($file)];
                 $output["files"][] = $obj;
             }
