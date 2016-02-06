@@ -3,7 +3,7 @@ function closure(t) {
 	return function() {
 		if (this.status == 200)	 {
 			console.log("Adding type: " + type);
-            $("#dropdown-items").append("<li><a href=\"#\" onclick=\"setCategory('" + 
+            $("#dropdown-items").append("<li><a href=\"#\" onclick=\"setCategory('" +
                     type + "')\">" + type + "</a></li>");
 		}
 	}
@@ -12,15 +12,11 @@ function closure(t) {
 function populate_types() {
     types = JSON.parse(this.responseText).types;
 
-    for(index = 0; index < types.length; index++) {
-        if(types[index] == "") {
-            continue;
-        }
-
-	var req = new XMLHttpRequest();
-	req.addEventListener("load", closure(types[index]));
-	req.open("GET", "/ajax/check_auth.php?type=" + types[index]);
-	req.send()
+    for (var i = 0; i < types.length; i++) {
+		var typename = folders[i];
+		if (typename.type != "") {
+			$("#dropdown-items").append("<li><a href=\"#\" onclick=\"setCategory('" + typename.type + "')\">" + typename.type + "</a></li>");
+		}
     }
 }
 
@@ -29,7 +25,7 @@ function uploadComplete() {
     if (this.status == 200) {
         $("#after-nav").append('<div class="alert alert-success" role="alert">Uploaded!</div>');
     } else {
-        $("#after-nav").append('<div class="alert alert-danger" role="alert">Oops! Something broke: ' + 
+        $("#after-nav").append('<div class="alert alert-danger" role="alert">Oops! Something broke: ' +
                 this.responseText + '</div>');
     }
 
