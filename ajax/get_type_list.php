@@ -18,11 +18,6 @@
 	]}
 	*/
 
-    if (!accesschk($_SESSION["username"], $dirname)) {
-		http_response_code(500);
-		die("error2");
-    }
-
 	$folders = scandir($dirname);
 
     $output = ["folders" => []];
