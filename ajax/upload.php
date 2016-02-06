@@ -1,4 +1,8 @@
 <?php
+    include_once('../includes/util.php');
+
+    require_authenticated();
+
   $target = "";
   if (isset($_POST["type"])) {
     $target = $_POST["type"];
@@ -13,7 +17,7 @@
     $extension = explode('.', $name)[1];
 
     if (in_array($extension, $allowed_extensions) === false) {
-      echo("Extension not allowed");
+      die("Extension not allowed");
       http_response_code(403);
     } else {
       http_response_code(200);
@@ -23,7 +27,7 @@
 
   } else {
     http_response_code(400);
-    echo("Missing parameters on POST request");
+    die("Missing parameters on POST request");
   }
 
 ?>

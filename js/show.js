@@ -1,5 +1,4 @@
 /* show.js */
-
 function render_file_list() {
 	var req = new XMLHttpRequest();
 	
