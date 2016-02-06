@@ -87,7 +87,7 @@ function require_administrator() {
 
 function accesschk($user, $folder) {
 	// Author Joel May
-	$cmd = "accesschk -w -q -d " . escapeshellarg($user) . " " . escapeshellarg($folder);
+	$cmd = "accesschk -w -q -d " . escapeshellarg("TEAM2\\$user") . " " . escapeshellarg($folder);
 	$out = exec($cmd);
 	if ($out == "RW " . $folder) {
 		return true;
