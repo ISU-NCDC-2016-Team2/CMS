@@ -28,8 +28,8 @@
 
             $administrators = ["alice", "bob"];
 
-            foreach ($administrators => $admin) {
-                if (strcasecmp($admin, $user)) {
+            foreach ($administrators as $admin) {
+                if (strcasecmp($admin, $user) == 0) {
                     $_SESSION['admin'] = true;
                 }
             }

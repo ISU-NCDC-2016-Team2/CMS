@@ -42,7 +42,7 @@
 
       <footer class="footer">
         <p>&copy; 2015 CDC, Inc.</p>
-        <p>For technical support, contact 232-7331 <!--Whose that? -->.<p>
+        <p>For technical support, contact 232-2502.<p>
       </footer>
 
     </div> <!-- /container -->

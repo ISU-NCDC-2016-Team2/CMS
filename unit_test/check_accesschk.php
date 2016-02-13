@@ -1,7 +1,7 @@
 <?php
 	require_once("../includes/util.php");
 	
-	$users = ["Administrator", "pam", "cyril"];
+	$users = ["Administrator", "pam", "cyril", "alice", "bob", "charlie", "david"];
 	foreach ($users as $user) {
 		echo "====$user====\n";
 		$folders = scandir("E:\\Files\\");
