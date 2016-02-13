@@ -3,16 +3,18 @@
 
     require_administrator();
 
-    $type = clean_input("/^\.*/", clean_input("/[:\/\\\\\\\\`'\"\*]/", isset($_GET["type"]) ? $_GET["type"] : $_POST["type"]));
-    if ($type != $_GET["type"]) ? $_GET["type"] : $_POST["type"] || $filename != $_GET["filename"]) {
-        http_response_code(500);
-        die("error");
-    }
+	$rawtype = isset($_GET["type"]) ? $_GET["type"] : $_POST["type"];
+
+	$type = clean_input("/^\.*/", clean_input("/[:\/\\\\\\\\`'\"\*]/", $rawtype));
+	if ($type !=  $rawtype) {
+	  http_response_code(500);
+	  die("error");
+	}
 
     $dirname = "E:\\Files\\$type";
     $deletename = "E:\\Deleted\\$type";
 
-    if (!file_exists($dirname) || !is_dir($dirname)) {
+    if (!file_exists($dirname) || !is_dir($dirname) || !accesschk($_SESSION["username"], $dirname)) {
         http_response_code(501);
         die("error1");
     }
